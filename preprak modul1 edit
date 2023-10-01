@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'modul1',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.red,
+        ),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'ini preprak'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+
+
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+
+
+}
+
+class NewPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Halaman Baru'),
+      ),
+      body: Center(
+        child: Text('Ini adalah halaman baru.'),
+      ),
+    );
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor:  Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+           Center(
+           child: ClipOval(
+            child: Image.asset(
+              'assets/orang.jpg',
+              width: 100.0,
+              height: 100.0,
+            ),
+            ),
+            ),
+            const SizedBox(height: 300.0),
+            const Text(
+              'M. Rizqi Dwi Adi Saputro/2021010370311507',
+              textAlign: TextAlign.center,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewPage()),
+                );
+              },
+              child: Text('Buka Halaman Baru'),
+            ),
+
+
+            Expanded(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Icon(
+              Icons.home,
+              size: 48.0,
+              color: Colors.black,
+            ),
+        ),
+      ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
